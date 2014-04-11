@@ -1,0 +1,13 @@
+markdown: rdiscount
+pygments: true
+rdiscount:
+    extensions: [smart, autolink]
+
+comments :
+    provider: disqus
+    disqus:
+    short_name: pandyxu
+
+name: pandyxu's blog
+description: pandyxu's blog
+url: http://pandyxu.github.io
