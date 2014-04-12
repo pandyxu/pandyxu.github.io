@@ -18,18 +18,19 @@ published: true
 
 DevKit解压到`C:\devkit`下，依次执行下面的命令安装
 
-```bash
+{% highlight bash %}
 $ cd /D C:\devkit
 $ ruby dk.rb init
 $ ruby dk.rb install
-```
+{% endhighlight %}
 
 ##安装Jekyll
 
 **1. 修改rubygems源**
 
 使用淘宝(<http://ruby.taobao.org/>)的rubygems源
-```bash
+
+{% highlight bash %}
 $ gem sources --remove https://rubygems.org/
 $ gem sources -a http://ruby.taobao.org/
 $ gem sources -l
@@ -38,22 +39,25 @@ $ gem sources -l
 http://ruby.taobao.org
 # 请确保只有 ruby.taobao.org
 $ gem install rails
-```
+{% endhighlight %}
+
 **2. 安装Jekyll**
 
-```bash
+{% highlight bash %}
 $ gem install jekyll
-```
+{% endhighlight %}
 
 查看Jekyll版本
-```bash
+
+{% highlight bash %}
 jekyll -v
-```
+{% endhighlight %}
+
 **3. 启动Jekyll服务器**
 
-```bash
+{% highlight bash %}
 jekyll serve
-```
+{% endhighlight %}
 
 启动服务器后，浏览器输入 <http://127.0.0.1:4000/> 访问搭建的博客。
 
@@ -62,32 +66,31 @@ jekyll serve
 **1. Jekyll serve "Error: Invalid argument"错误**
 
 降级Jekyll版本到1.4.2
-```bash
+
+{% highlight bash %}
 $ gem uninstall jekyll
 $ gem install jekyll --version "=1.4.2"
-```
+{% endhighlight %}
 
 **2. Jekyll serve "invalid byte sequence in GBK"**
 
 中文编码问题
 
-找到jekyll安装目录，修改convertible.rb文件
+找到jekyll安装目录，修改`convertible.rb`文件
 
 `C:\Ruby193\lib\ruby\gems\1.9.1\gems\jekyll-1.4.2\lib\jekyll\convertible.rb`
 
 第38行
 
-```ruby
+{% highlight ruby %}
 self.content = File.read_with_options(File.join(base, name), merged_file_read_opts(opts))
-```
+{% endhighlight %}
 
 替换为下面内容
 
-```ruby
+{% highlight ruby %}
 self.content = File.read_with_options(File.join(base, name), :encoding => "utf-8")
-```
-
-重启服务器
+{% endhighlight %}
 
 ##参考链接
 1. [Windows 安装 Jekyll 若干问题的解决](http://dannyli.net/notes/fix-problems-of-jekyll-on-windows/)
